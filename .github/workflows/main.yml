@@ -21,9 +21,9 @@ jobs:
         run: mvn clean verify
         working-directory: simple-api
      
-      - name: Analyze with SonarCloud
-        run: mvn -B verify sonar:sonar -Dsonar.projectKey="change" -Dsonar.organization="change" -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-        working-directory: simple-api
+    #   - name: Analyze with SonarCloud
+    #     run: mvn -B verify sonar:sonar -Dsonar.projectKey="change" -Dsonar.organization="change" -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+    #     working-directory: simple-api
  
      
  
