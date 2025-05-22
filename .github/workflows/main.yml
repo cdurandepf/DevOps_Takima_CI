@@ -82,6 +82,6 @@ jobs:
       - name: Add SSH Host key 
         run: |
           ssh-keyscan corentin.durand.takima.cloud >> ~/.ssh/known_hosts
-          chmod 777 ~/.ssh/known_hosts   w
+          chmod 777 ~/.ssh/known_hosts   
       - name: Run Ansible playbook
         run: ansible-playbook -i /DevOps_Takima_CI/ansible/inventories/setup.yml /DevOps_Takima_CI/ansible/playbook.yml  
