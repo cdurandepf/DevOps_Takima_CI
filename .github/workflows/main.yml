@@ -60,3 +60,28 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-httpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}
  
+  deploy-ansible-service :
+    needs: build-and-push-docker-image
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+ 
+      - name: Install Ansible
+        run: |
+          sudo apt-get update
+          sudo apt upgrade
+          sudo apt-get install -y ansible
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 777 ~/.ssh/id_rsa
+      
+      - name: Add SSH Host key 
+        run: |
+          ssh-keyscan corentin.durand.takima.cloud >> ~/.ssh/known_hosts
+          chmod 777 ~/.ssh/known_hosts   
+      - name: Run Ansible playbook
+        run: ansible-playbook -i inventories/setup.yml playbook.yml  
