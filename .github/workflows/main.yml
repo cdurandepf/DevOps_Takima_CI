@@ -84,4 +84,4 @@ jobs:
           ssh-keyscan corentin.durand.takima.cloud >> ~/.ssh/known_hosts
           chmod 777 ~/.ssh/known_hosts   
       - name: Run Ansible playbook
-        run: ansible-playbook -i inventories/setup.yml playbook.yml  
+        run: ansible-playbook -i /home/coren/DevOps_Takima_CI/ansible/inventories/setup.yml /home/coren/DevOps_Takima_CI/ansible/playbook.yml  
