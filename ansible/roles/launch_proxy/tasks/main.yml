@@ -1,0 +1,11 @@
+- name: Run HTTPD
+  docker_container:
+    name: httpd
+    image: corentindes/tp-devops-httpd
+    pull: yes
+    ports:
+      - "80:80"
+    networks:
+      - name: my-network
+    restart_policy: on-failure
+    restart_retries : 3

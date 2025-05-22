@@ -1,0 +1,4 @@
+# Create a Docker network
+- name: Create a network
+  community.docker.docker_network:
+    name: my-network

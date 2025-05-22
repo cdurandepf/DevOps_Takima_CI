@@ -16,7 +16,7 @@ services:
       - DATABASE_PASSWORD=pwd
     networks:
       - my-network
-
+ 
   httpd:
     build: "http-server"
     ports:

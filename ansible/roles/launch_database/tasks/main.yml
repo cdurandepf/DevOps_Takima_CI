@@ -1,0 +1,16 @@
+- name: Run DataBase
+  docker_container:
+    name: database
+    image: corentindes/tp-devops-database
+    pull: yes
+    ports:
+      - "5432:5432"
+    env:
+      DATABASE_HOSt: database
+      DATABASE_NAME: db
+      DATABASE_PASSWORD: pwd
+      POSTGRES_HOST_AUTH_METHOD: trust
+    networks:
+      - name: my-network
+    restart_policy: on-failure
+    restart_retries : 3

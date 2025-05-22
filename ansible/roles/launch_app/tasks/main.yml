@@ -1,0 +1,16 @@
+- name: Run SimpleApi
+  docker_container:
+    name: simple-api
+    image: corentindes/tp-devops-simple-api
+    pull: yes
+    ports:
+      - "8080:8080"
+    networks: 
+      - name: my-network
+    env: 
+      DATABASE_HOST: database
+      DATABASE_PASSWORD: pwd 
+      DATABASE_PORT: "5432"
+      DATABASE_NAME: db
+    restart_policy: on-failure
+    restart_retries : 3
